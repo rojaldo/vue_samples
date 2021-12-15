@@ -4,7 +4,7 @@
             <h1 class="display-3">{{apod.title}}</h1>
             <p class="lead">{{apod.date}}</p>
             <hr class="my-2" />
-            <img :src="apod.url" :alt="apod.title" class="d-block mx-auto mb-3">
+            <img v-bind:src="apod.url" v-bind:alt="apod.title" class="d-block mx-auto mb-3">
             <p>{{apod.explanation}}</p>
             <p class="lead">
                 <a

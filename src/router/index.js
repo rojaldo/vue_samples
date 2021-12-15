@@ -3,7 +3,7 @@ import Calculator from '../components/calculator/Calculator.vue'
 // import Apod from '../components/apod/Apod.vue'
 
 const routes = [
-  { path: '/', redirect: '/apod' },
+  { path: '/', redirect: '/beers' },
   {
     path: '/calculator',
     name: 'Calculator',
@@ -18,6 +18,11 @@ const routes = [
     path: '/apod',
     name: 'Apod',
     component: () => import(/* webpackChunkName: "about" */ '../components/apod/Apod.vue')
+  },
+  {
+    path: '/beers',
+    name: 'Beers',
+    component: () => import(/* webpackChunkName: "about" */ '../components/beers/Beers.vue')
   },
   {
     path: "/:pathMatch(.*)*",
