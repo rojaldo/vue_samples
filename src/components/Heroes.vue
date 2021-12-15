@@ -1,35 +1,39 @@
 <template>
     <div class="container">
-        <div class="form-group">
-            <label for>New Hero</label>
-            <input type="text" class="form-control" name id aria-describedby="helpId" placeholder v-model="newHero" />
-            <small id="helpId" class="form-text text-muted" v-if="newHero.length === 0" >hero name should not be empty</small>
-        </div>
-        <button type="button" class="btn btn-primary" @click="addHero()" v-bind:disabled="newHero.length === 0">Add Hero</button>
-
-        <ul class="list-group mt-3">
-            <li class="list-group-item" v-for="(hero, index) in heroes" :key="index">{{ hero }}</li>
-        </ul>
+        <Form @on-new-hero="addHero($event)"></Form>
+        <List v-bind:myheroes="heroes"></List>
     </div>
 </template>
 
 <script>
+import { Hero } from "../model/Hero";
+import List from "./List.vue";
+import Form from "./Form.vue";
+
 export default {
-    name: 'Heroes',
+    name: "Heroes",
     data() {
         return {
-            newHero: '',       
-            heroes: ['Spiderman', 'Ironman', 'Hulk', 'Thor']
-        }
+            newHeroName: "",
+            newHeroDescription: "",
+            heroes: [
+                new Hero("Batman", "Dark knight"),
+                new Hero("Superman", "Super hero"),
+                new Hero("Spiderman", "Spider hero"),
+                new Hero("Ironman", "Super hero")
+            ]
+        };
     },
     methods: {
-        addHero() {
-            if(this.newHero.length > 0) {
-                this.heroes.push(this.newHero);
-                this.newHero = '';
+        addHero(hero) {
+            if(hero.name.length > 0) {
+                this.heroes.push(hero);
+                this.newHeroName = "";
+                this.newHeroDescription = "";
             }
         }
-    }
+    },
+    components: { List, Form }
 }
 </script>
 
