@@ -5,7 +5,7 @@
   </div>
 </template>
 <script>
-import { CalculatorEngine } from "../model/CalculatorEngine";
+import { CalculatorEngine } from "../../model/CalculatorEngine";
 import Display from "./Display.vue";
 import Keyboard from "./Keyboard.vue";
 

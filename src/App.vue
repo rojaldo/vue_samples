@@ -1,17 +1,11 @@
 <template>
-<Heroes></Heroes>  
+  <div id="nav">
+    <router-link to="/calculator">Calculator</router-link> |
+    <router-link to="/heroes">Heroes</router-link> |
+    <router-link to="/apod">Apod</router-link>
+  </div>
+  <router-view/>
 </template>
-
-<script>
-import Heroes from './components/Heroes.vue'
-
-export default {
-  name: 'App',
-  components: {
-    Heroes
-  }
-}
-</script>
 
 <style>
 

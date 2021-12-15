@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import { Hero } from "../model/Hero";
+import { Hero } from "../../model/Hero";
 import List from "./List.vue";
 import Form from "./Form.vue";
 

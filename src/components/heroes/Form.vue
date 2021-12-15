@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import { Hero } from "../model/Hero";
+import { Hero } from "../../model/Hero";
 
 export default {
     name: 'Form',
