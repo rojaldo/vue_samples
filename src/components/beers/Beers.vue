@@ -1,6 +1,8 @@
 
 <template>
-    <div class="container">
+
+    <div class="container pt-5">
+        <Slider v-model="value" />
         <div class="row">
             <div class="col-sm-12 col-md-6 col-lg-4 my-3" v-for="(beer, index) in beers" :key="index">
                 <div class="card h-100">
@@ -17,12 +19,17 @@
 </template>
 
 <script>
+import Slider from '@vueform/slider';
+import '@vueform/slider/themes/default.css';
+
 export default {
     data() {
         return {
-            beers: []
+            beers: [],
+            value: [3,5]
         }
     },
+    components: { Slider },
     setup() {
 
         return {}
@@ -39,5 +46,5 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss" scoped  >
 </style>
