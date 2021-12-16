@@ -12,7 +12,7 @@ const routes = [
   {
     path: '/heroes',
     name: 'Heroes',
-    component: () => import(/* webpackChunkName: "about" */ '../components/heroes/Heroes.vue')
+    component: () => import(/* webpackChunkName: "about" */ '../components/heroes/HeroesContainer.vue')
   },
   {
     path: '/apod',

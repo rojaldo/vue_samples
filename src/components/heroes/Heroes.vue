@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import { Hero } from "../../model/Hero";
+// import { Hero } from "../../model/Hero";
 import List from "./List.vue";
 import Form from "./Form.vue";
 
@@ -16,24 +16,26 @@ export default {
         return {
             newHeroName: "",
             newHeroDescription: "",
-            heroes: [
-                new Hero("Batman", "Dark knight"),
-                new Hero("Superman", "Super hero"),
-                new Hero("Spiderman", "Spider hero"),
-                new Hero("Ironman", "Super hero")
-            ]
+            heroes: this.myheroes
         };
+    },props: ['myheroes']
+    , components: {
+        List,
+        Form
     },
     methods: {
         addHero(hero) {
             if(hero.name.length > 0) {
                 this.heroes.push(hero);
+                this.$emit('onNewHero', this.heroes);
+                // this.store.commit("updateHeroesList", this.heroes);
                 this.newHeroName = "";
                 this.newHeroDescription = "";
             }
         }
-    },
-    components: { List, Form }
+    }, emits: {
+        onNewHero: "addHero"
+    }
 }
 </script>
 
