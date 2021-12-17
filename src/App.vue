@@ -3,7 +3,8 @@
     <router-link to="/calculator">Calculator</router-link> |
     <router-link to="/heroes">Heroes</router-link> |
     <router-link to="/apod">Apod</router-link> | 
-    <router-link to="/beers">Beers</router-link>
+    <router-link to="/beers">Beers</router-link> |
+    <router-link to="/trivial">Trivial</router-link>
   </div>
   <router-view/>
 </template>

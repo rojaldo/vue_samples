@@ -29,18 +29,25 @@
 <script>
 import Slider from '@vueform/slider';
 import '@vueform/slider/themes/default.css';
+import { useStore } from 'vuex';
 
 export default {
+    setup() {
+
+        return {
+            store: useStore(),
+        }
+    },
     data() {
         return {
-            beers: [],
-            range: [3, 5]
+            beers: this.store.getters.beersList,
+            range: this.store.getters.range
         }
     },
     methods: {
         updateRange() {
             console.log(this.range);
-
+            this.store.dispatch('updateRange', this.range);
         }
 
     },
@@ -52,19 +59,11 @@ export default {
         }
     },
     components: { Slider },
-    setup() {
-
-        return {}
-    },
     created() {
-        fetch('https://api.punkapi.com/v2/beers')
-            .then(response => response.json())
-            .then(data => {
-                console.log(data);
-                this.beers = data;
-
-            })
-            .catch(error => console.error(error));
+        this.beers = this.store.getters.beersList;
+        this.store.dispatch('fetchBeers').then(() => {
+            this.beers = this.store.getters.beersList;
+        });
     }
 }
 </script>

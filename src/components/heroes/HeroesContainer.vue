@@ -1,37 +1,32 @@
+/* eslint-disable no-unused-vars */
 <template>
     <div>
         <Heroes :myheroes="heroes" @on-new-hero="updateHeroes($event)"></Heroes>
     </div>
 </template>
 
-<script>
+<script setup>
 import Heroes from "./Heroes.vue";
 import { useStore } from "vuex";
-export default {
-    setup() {
-        return {
-            store: useStore(),
-        }
-    }, components: {
-        Heroes
-    }, data() {
-        return {
-            newHeroName: "",
-            newHeroDescription: "",
-            heroes: []
-        };
-    }, methods: {
-        updateHeroes(heroes) {
-            console.log('updateHeroes');
-            this.heroes = heroes;
-            console.log(this.heroes);
-            this.store.commit("updateHeroesList", heroes);
-        }
-    }, created() {
-        console.log('Created HeroesContainer');
-        this.heroes = this.store.getters.heroesList;
-    }
+import { ref } from "vue";
+
+// eslint-disable-next-line no-unused-vars
+let newHeroName = ref("");
+// eslint-disable-next-line no-unused-vars
+let newHeroDescription = ref("");
+let heroes = ref([]);
+let store = useStore();
+
+// onCreated
+heroes = store.getters.heroesList;
+
+const updateHeroes = (myheroes) => {
+    console.log('updateHeroes');
+    heroes = myheroes;
+    console.log(heroes);
+    store.commit("updateHeroesList", heroes);
 }
+
 </script>
 
 <style lang="scss" scoped>
